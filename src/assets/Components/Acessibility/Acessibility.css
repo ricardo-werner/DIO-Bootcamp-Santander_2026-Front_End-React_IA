@@ -1,0 +1,30 @@
+@layer base {
+  /* PALETAS DE ACESSIBILIDADE WCAG (Cores Funcionais) */
+
+  /* 1. Paleta de Cores para tema Padrão - Contraste Universal (BAixa Visão / Fotofobia ) */
+  :root, [data-theme="universal"] {
+    --bck-color: #0B0F19; /* Preto Profundo */
+    --surface-color: #1E293B; /* Cinza Escuro (Cards e Modais) */
+    --text-color: #FFFFFF; /* Branco Puro */
+    --primary-color: #06B6D4; /* Ciano Claro (Botões e Links) */
+    --alert-color: #F59E0B; /* Amarelo Alerta */
+  }
+
+  /* 2. Paleta de Cores para tema Calmo (Dislexia, TDAH, Down) */
+  [data-theme="foco-calmo"] {
+    --bck-color: #F8FAFC; /* Cinza Gelo */
+    --surface-color: #E2E8F0; /* Cinza Médio (Divisores e Cards) */
+    --text-color: #0F172A; /* Azul Profundo */
+    --primary-color: #2563EB; /* Azul Calmo  */
+    --alert-color: #2563EB; /* Usamos o próprio azul para manter o visual calmo  */
+  }
+
+  /* 3. Paleta de Cores para tema Alta Distinção (Daltonismo, Protanopia, Deuteranopia) */
+  [data-theme="alta-distincao"] {
+    --bck-color: #FFFFFF; /* Branco Puro */
+    --surface-color: #FFFBEB; /* Creme Suave (Destaques) */
+    --text-color: #334155; /* Cinza Carvão */
+    --primary-color: #1E3A8A; /* Azul Marinho (Sucesso e Ações) */
+    --alert-color: #C2410C; /* Laranja Queimado (Erro e Atenção) */
+  }
+}
