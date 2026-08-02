@@ -1,4 +1,4 @@
-import "@/assets/Components/Acessibility/Acessibility.css";
+import "@/assets/Components/Accessibility/Accessibility.css";
 import "@/index.css";
 
 import { StrictMode } from "react";

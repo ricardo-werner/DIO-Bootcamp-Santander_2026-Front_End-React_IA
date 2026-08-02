@@ -1,7 +1,8 @@
+import "./AccessibilityModal.css";
+
 import { Brain, Eye, Palette, RefreshCw, X } from "lucide-react";
 
 import { useAccessibility } from "./AccessibilityContext";
-import "./AcessibilityModal.css";
 
 export default function AccessibilityModal() {
   const {

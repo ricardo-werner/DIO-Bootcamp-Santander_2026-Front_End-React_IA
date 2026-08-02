@@ -1,12 +1,12 @@
-import { Accessibility } from "lucide-react";
-
 import "@/App.css";
+
+import { PersonStanding } from "lucide-react";
 
 import {
   AccessibilityProvider,
   useAccessibility,
-} from "@/assets/Components/Acessibility/AccessibilityContext";
-import AccessibilityModal from "@/assets/Components/Acessibility/AcessibilityModal";
+} from "@/assets/Components/Accessibility/AccessibilityContext";
+import AccessibilityModal from "@/assets/Components/Accessibility/AccessibilityModal";
 
 function AppContent() {
   const { toggleModal } = useAccessibility();
@@ -22,7 +22,7 @@ function AppContent() {
         </p>
 
         <button className="app-action" onClick={toggleModal} type="button">
-          <Accessibility size={18} />
+          <PersonStanding size={18} />
           Abrir painel de acessibilidade
         </button>
       </header>
