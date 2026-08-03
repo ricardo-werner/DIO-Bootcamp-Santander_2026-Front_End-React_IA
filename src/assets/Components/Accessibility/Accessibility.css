@@ -1,30 +1,136 @@
+@reference "@/index.css";
+
 @layer base {
   /* PALETAS DE ACESSIBILIDADE WCAG (Cores Funcionais) */
 
   /* 1. Paleta de Cores para tema Padrão - Contraste Universal (BAixa Visão / Fotofobia ) */
-  :root, [data-theme="universal"] {
-    --bck-color: #0B0F19; /* Preto Profundo */
-    --surface-color: #1E293B; /* Cinza Escuro (Cards e Modais) */
-    --text-color: #FFFFFF; /* Branco Puro */
-    --primary-color: #06B6D4; /* Ciano Claro (Botões e Links) */
-    --alert-color: #F59E0B; /* Amarelo Alerta */
+  :root,
+  [data-theme="universal"] {
+    --bck-color: #0b0f19; /* Preto Profundo */
+    --surface-color: #1e293b; /* Cinza Escuro (Cards e Modais) */
+    --text-color: #ffffff; /* Branco Puro */
+    --primary-color: #06b6d4; /* Ciano Claro (Botões e Links) */
+    --alert-color: #f59e0b; /* Amarelo Alerta */
   }
 
   /* 2. Paleta de Cores para tema Calmo (Dislexia, TDAH, Down) */
   [data-theme="foco-calmo"] {
-    --bck-color: #F8FAFC; /* Cinza Gelo */
-    --surface-color: #E2E8F0; /* Cinza Médio (Divisores e Cards) */
-    --text-color: #0F172A; /* Azul Profundo */
-    --primary-color: #2563EB; /* Azul Calmo  */
-    --alert-color: #2563EB; /* Usamos o próprio azul para manter o visual calmo  */
+    --bck-color: #f8fafc; /* Cinza Gelo */
+    --surface-color: #e2e8f0; /* Cinza Médio (Divisores e Cards) */
+    --text-color: #0f172a; /* Azul Profundo */
+    --primary-color: #2563eb; /* Azul Calmo  */
+    --alert-color: #2563eb; /* Usamos o próprio azul para manter o visual calmo  */
   }
 
   /* 3. Paleta de Cores para tema Alta Distinção (Daltonismo, Protanopia, Deuteranopia) */
   [data-theme="alta-distincao"] {
-    --bck-color: #FFFFFF; /* Branco Puro */
-    --surface-color: #FFFBEB; /* Creme Suave (Destaques) */
+    --bck-color: #ffffff; /* Branco Puro */
+    --surface-color: #fffbeb; /* Creme Suave (Destaques) */
     --text-color: #334155; /* Cinza Carvão */
-    --primary-color: #1E3A8A; /* Azul Marinho (Sucesso e Ações) */
-    --alert-color: #C2410C; /* Laranja Queimado (Erro e Atenção) */
+    --primary-color: #1e3a8a; /* Azul Marinho (Sucesso e Ações) */
+    --alert-color: #c2410c; /* Laranja Queimado (Erro e Atenção) */
+  }
+}
+
+@layer components {
+  .daltonismo-deuteranopia {
+    filter: url('data:image/svg+xml,<svh xmlns="http://w3.org"><filter id="f"><feColorMatrix type="matrix" values="0.625,0375,0,0,0 0.7,0.3,0,0,0 0,0.3,0.7,0,0,0,0,0,1,0"/><filter><svg>#f');
+  }
+
+  .daltonismo-protanopia {
+    filter: url('data:image/svg+xml,<svh xmlns="http://w3.org"><filter id="f"><feColorMatrix type="matrix" values="0.567,0433,0,0,0 0.558,0.442,0,0,0 0,0.242,0.758,0,0,0,0,0,1,0"/><filter><svg>#f');
+  }
+
+  .daltonismo-tritanopia {
+    filter: url('data:image/svg+xml,<svh xmlns="http://w3.org"><filter id="f"><feColorMatrix type="matrix" values="0.95,0.05,0,0,0 0.433,0.567,0,0,0 0,0.475,0.525,0,0,0,0,0,1,0"/><filter><svg>#f');
+  }
+
+  /* Botões Flutuantes Globais */
+  .floating-toggle-btn {
+    @apply fixed right-5 bottom-5 z-50 flex h-14 w-14 items-center rounded-full bg-blue-600 text-white shadow-lg shadow-blue-600/30 transition-transform hover:scale-110 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none;
+  }
+
+  .theme-toggle-btn {
+    @apply shadow-md fixed right-8 bottom-24 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-slate-200 text-slate-800 transition-transform hover:scale-110 focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 focus:outline-none dark:bg-slate-800 dark:text-slate-200;
+  }
+
+  /* Modal Estrutura */
+  .modal-overlay {
+    @apply fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 p-4 backdrop-blur-sm;
+  }
+
+  .modal-box {
+    @apply max-h-[90vh] w-full max-w-md overflow-y-auto rounded-xl border-slate-200 bg-white p-6 text-slate-900 shadow-xl dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100;
+  }
+
+  .modal-header {
+    @apply flex items-center justify-between border-b border-slate-200 pb-4 dark:border-slate-800;
+  }
+
+  .modal-title {
+    @apply text-lg font-bold;
+  }
+
+  .modal-close-btn {
+    @apply dark:hover:text-slate-300 rounded-lg p-1.5 text-slate-400 transition-colors duration-150 hover:bg-slate-100 hover:text-slate-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none dark:text-slate-500 dark:hover:bg-slate-800;
+  }
+
+  .modal-body {
+    @apply space-y-5 py-4;
+  }
+
+  /* Controles e Inputs */
+  .control-group {
+    @apply flex flex-col;
+  }
+
+  .control-label {
+    @apply dark:text-slate-400 mb-2 text-xs font-bold text-slate-600;
+  }
+
+  .slider-input {
+    @apply focus:ring-2 h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none dark:bg-slate-700;
+  }
+
+  .select-input {
+    @apply w-full rounded-lg border border-slate-300 bg-slate-50 p-2.5 text-sm text-slate-900 transition-all duration-150 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100;
+  }
+
+  .checkbox-group {
+    @apply flex items-center gap-3 pt-2;
+  }
+
+  .checkbox-input {
+    @apply h-4 w-4 cursor-pointer rounded border-slate-300 bg-white text-blue-600 focus:ring-blue-500 focus:ring-offset-2 dark:border-slate-700 dark:bg-slate-800;
+  }
+
+  /* Rodapé do Modal e Botões de Ação */
+  .modal-footer {
+    @apply mt-2 flex justify-between border-t border-slate-200 pt-4 dark:border-slate-800;
+  }
+
+  .btn-reset {
+    @apply flex items-center gap-2 rounded-lg border border-slate-300 bg-transparent px-4 py-2 text-sm font-bold text-slate-600 transition-all duration-150 hover:bg-slate-50 hover:text-slate-800 focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 focus:outline-none active:bg-slate-100 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200 dark:active:bg-slate-900;
+  }
+
+  .btn-apply {
+    @apply rounded-lg bg-blue-600 px-5 py-2 text-sm font-bold text-white shadow-sm shadow-blue-600/10 transition-all duration-150 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none active:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-500 dark:active:bg-blue-700;
+  }
+
+  /* Componente de Áudio (Suporte por Voz) */
+  .audio-btn-container {
+    @apply flex flex-col;
+  }
+
+  .audio-btn-label {
+    @apply mb-2 text-xs font-bold text-slate-600 dark:text-slate-400;
+  }
+
+  .audio-btn-active {
+    @apply flex w-full items-center justify-center gap-2 rounded-lg bg-red-100 p-3 text-sm font-bold text-red-700 transition-colors hover:bg-red-200 focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:outline-none dark:bg-red-950 dark:text-red-300;
+  }
+
+  .audio-btn-inactive {
+    @apply w-full flex items-center justify-center gap-2 p-3 rounded-lg text-sm font-bold transition-colors bg-blue-50 dark:bg-slate-800 text-blue-700 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
   }
 }
