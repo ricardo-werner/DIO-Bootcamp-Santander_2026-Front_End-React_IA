@@ -1,86 +1,21 @@
-/* eslint-disable react-refresh/only-export-components */
-import {
-  createContext,
-  type ReactNode,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { createContext, useContext, useState, useEffect, ReactNode }  from "react";
 
-type AccessibilityTheme = "universal" | "foco-calmo" | "alta-distincao";
-
-type AccessibilityContextValue = {
+interface AccessibilityContextType {
   isModalOpen: boolean;
   toggleModal: () => void;
-  activeTheme: AccessibilityTheme;
-  setActiveTheme: (theme: AccessibilityTheme) => void;
+  fontSize: number;
+  setFontSize: React.Dispatch<React.SetStateAction<number>>;
+  lineHeight: number;
+  setLineHeight: React.Dispatch<React.SetStateAction<number>>;
+  letterSpacing: number;
+  setLetterSpacing: React.Dispatch<React.SetStateAction<number>>;
+  isDyslexicFont: boolean;
+  setIsDyslexicFont: React.Dispatch<React.SetStateAction<boolean>>;
+  darkMode: boolean;
+  toggleDarkMode: () => void;
+  colorBlindness: string;
+  setColorBlindness: React.Dispatch<React.SetStateAction<string>>;
   resetSettings: () => void;
-};
-
-const STORAGE_KEY = "prumia:accessibility-theme";
-
-const AccessibilityContext = createContext<AccessibilityContextValue | null>(
-  null,
-);
-
-function getInitialTheme(): AccessibilityTheme {
-  if (typeof window === "undefined") return "universal";
-
-  const storedTheme = window.localStorage.getItem(STORAGE_KEY);
-
-  if (storedTheme === "foco-calmo" || storedTheme === "alta-distincao") {
-    return storedTheme;
-  }
-
-  return "universal";
 }
 
-type AccessibilityProviderProps = {
-  children: ReactNode;
-};
 
-export function AccessibilityProvider({
-  children,
-}: AccessibilityProviderProps) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeTheme, setActiveTheme] =
-    useState<AccessibilityTheme>(getInitialTheme);
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", activeTheme);
-    window.localStorage.setItem(STORAGE_KEY, activeTheme);
-  }, [activeTheme]);
-
-  const value = useMemo<AccessibilityContextValue>(
-    () => ({
-      isModalOpen,
-      toggleModal: () => setIsModalOpen((previous) => !previous),
-      activeTheme,
-      setActiveTheme,
-      resetSettings: () => {
-        setActiveTheme("universal");
-        setIsModalOpen(false);
-      },
-    }),
-    [activeTheme, isModalOpen],
-  );
-
-  return (
-    <AccessibilityContext.Provider value={value}>
-      {children}
-    </AccessibilityContext.Provider>
-  );
-}
-
-export function useAccessibility() {
-  const context = useContext(AccessibilityContext);
-
-  if (!context) {
-    throw new Error(
-      "useAccessibility deve ser usado dentro de AccessibilityProvider",
-    );
-  }
-
-  return context;
-}
