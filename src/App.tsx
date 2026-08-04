@@ -2,11 +2,9 @@ import "@/App.css";
 
 import { PersonStanding } from "lucide-react";
 
-import {
-  AccessibilityProvider,
-  useAccessibility,
-} from "@/assets/Components/Accessibility/AccessibilityContext";
+import { AccessibilityProvider } from "@/assets/Components/Accessibility/AccessibilityContext";
 import AccessibilityModal from "@/assets/Components/Accessibility/AccessibilityModal";
+import { useAccessibility } from "@/assets/Components/Accessibility/Hooks/context";
 
 function AppContent() {
   const { toggleModal } = useAccessibility();
