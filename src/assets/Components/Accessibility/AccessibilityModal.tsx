@@ -2,7 +2,7 @@ import "./Accessibility.css";
 
 import { Eye, Moon, RefreshCw, Sun, X } from "lucide-react";
 
-import { useAccessibility } from "./AccessibilityContext";
+import { useAccessibility } from "../Accessibility/Hooks/context";
 
 function TextToSpeech() {
   const handleSpeak = () => {
@@ -79,9 +79,12 @@ export default function AccessibilityModal() {
             className="modal-box"
             role="dialog"
             aria-modal="true"
+            aria-labelledby="accessibility-modal-title"
           >
             <div className="modal-header">
-              <h3 className="modal-title">Acessibilidade Integrada</h3>
+              <h3 id="accessibility-modal-title" className="modal-title">
+                Acessibilidade Integrada
+              </h3>
               <button onClick={toggleModal} className="modal-close-btn">
                 <X size={20} />
               </button>
