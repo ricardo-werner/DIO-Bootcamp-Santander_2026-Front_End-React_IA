@@ -1,33 +1,12 @@
-/* eslint-disable react-refresh/only-export-components */
+import { type ReactNode,useEffect, useState } from "react";
 
-import type { ReactNode } from "react";
-import { createContext, useContext, useEffect, useState } from "react";
+import { AccessibilityContext } from '../Accessibility/Hooks/context';
 
-interface AccessibilityContextType {
-  isModalOpen: boolean;
-  toggleModal: () => void;
-  fontSize: number;
-  setFontSize: React.Dispatch<React.SetStateAction<number>>;
-  lineHeight: number;
-  setLineHeight: React.Dispatch<React.SetStateAction<number>>;
-  letterSpacing: number;
-  setLetterSpacing: React.Dispatch<React.SetStateAction<number>>;
-  isDyslexicFont: boolean;
-  setIsDyslexicFont: React.Dispatch<React.SetStateAction<boolean>>;
-  darkMode: boolean;
-  toggleDarkMode: () => void;
-  colorBlindness: string;
-  setColorBlindness: React.Dispatch<React.SetStateAction<string>>;
-  colorPalette: string;
-  setColorPalette: React.Dispatch<React.SetStateAction<string>>;
-  resetSettings: () => void;
-}
-
-const AccessibilityContext = createContext<
-  AccessibilityContextType | undefined
->(undefined);
-
-export function AccessibilityProvider({ children }: { children: ReactNode }) {
+export function AccessibilityProvider({
+  children,
+}: {
+  children: ReactNode;
+}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [fontSize, setFontSize] = useState<number>(
@@ -51,7 +30,7 @@ export function AccessibilityProvider({ children }: { children: ReactNode }) {
 
   // NOVO: Armazena e inicializa a paleta de cores preferida
   const [colorPalette, setColorPalette] = useState<string>(
-    () => localStorage.getItem("acc_color_palette") || "calmo",
+    () => localStorage.getItem("acc_color_palette") || "universal",
   );
 
   useEffect(() => {
@@ -62,6 +41,10 @@ export function AccessibilityProvider({ children }: { children: ReactNode }) {
     localStorage.setItem("acc_dark_mode", darkMode.toString());
     localStorage.setItem("acc_color_blindness", colorBlindness);
     localStorage.setItem("acc_color_palette", colorPalette);
+
+    // Aplicação exata do meu modelo:
+    // Injeta o atributo data-theme na raiz do documento (html) para ativar as variáveis CSS
+    document.documentElement.setAttribute("data-theme", colorPalette);
 
     if (darkMode) {
       document.documentElement.classList.add("dark");
@@ -87,7 +70,7 @@ export function AccessibilityProvider({ children }: { children: ReactNode }) {
     setLetterSpacing(0.02);
     setIsDyslexicFont(false);
     setColorBlindness("none");
-    setColorPalette("calmo");
+    setColorPalette("universal");
     setDarkMode(false);
   };
 
@@ -102,12 +85,6 @@ export function AccessibilityProvider({ children }: { children: ReactNode }) {
     if (colorBlindness === "protanopia") return "daltonismo-protanopia";
     if (colorBlindness === "tritanopia") return "daltonismo-tritanopia";
     return "";
-  };
-
-  const getPaletteClass = () => {
-    if (colorPalette === "universal") return "paleta-universal";
-    if (colorPalette === "alta-definicao") return "paleta-alta-definicao";
-    return "paleta-calmo";
   };
 
   return (
@@ -135,7 +112,7 @@ export function AccessibilityProvider({ children }: { children: ReactNode }) {
       {/* A classe wrapper-container aplica o background-color e color baseados nas paletas */}
       <div
         style={dynamicStyles}
-        className={`wrapper-container ${getPaletteClass()} ${getDaltonismoClass()} ${
+        className={`min-h-screen text-left transition-all duration-200 ${getDaltonismoClass()} ${
           isDyslexicFont ? "font-lexend" : "font-sans"
         }`}
       >
@@ -145,12 +122,3 @@ export function AccessibilityProvider({ children }: { children: ReactNode }) {
   );
 }
 
-export function useAccessibility() {
-  const context = useContext(AccessibilityContext);
-  if (!context) {
-    throw new Error(
-      "useAccessibility deve ser usado dentro de um AccessibilityProvider",
-    );
-  }
-  return context;
-}
