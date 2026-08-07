@@ -1,16 +1,16 @@
 import { type ReactNode, useEffect, useState } from "react";
 
-import { AccessibilityContext } from '../Accessibility/Hooks/context';
+import { AccessibilityContext } from "../Accessibility/Hooks/context";
 
-export function AccessibilityProvider({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export function AccessibilityProvider({ children }: { children: ReactNode }) {
   const normalizeColorPalette = (value: string | null) => {
     if (value === "foco-calmo") return "calmo";
     if (value === "alta-distincao") return "alta-definicao";
-    if (value === "calmo" || value === "universal" || value === "alta-definicao") {
+    if (
+      value === "calmo" ||
+      value === "universal" ||
+      value === "alta-definicao"
+    ) {
       return value;
     }
 
@@ -39,8 +39,8 @@ export function AccessibilityProvider({
   );
 
   // NOVO: Armazena e inicializa a paleta de cores preferida
-  const [colorPalette, setColorPalette] = useState<string>(
-    () => normalizeColorPalette(localStorage.getItem("acc_color_palette")),
+  const [colorPalette, setColorPalette] = useState<string>(() =>
+    normalizeColorPalette(localStorage.getItem("acc_color_palette")),
   );
 
   useEffect(() => {
@@ -58,7 +58,6 @@ export function AccessibilityProvider({
     // data-theme controla o modo claro/escuro e data-palette controla as cores funcionais.
     document.documentElement.setAttribute("data-theme", themeMode);
     document.documentElement.setAttribute("data-palette", colorPalette);
-    document.documentElement.classList.toggle("dark", darkMode);
     document.documentElement.style.colorScheme = themeMode;
   }, [
     fontSize,
@@ -130,4 +129,3 @@ export function AccessibilityProvider({
     </AccessibilityContext.Provider>
   );
 }
-

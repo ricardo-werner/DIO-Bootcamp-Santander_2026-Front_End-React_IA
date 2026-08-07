@@ -51,7 +51,11 @@
   }
 
   .theme-toggle-btn {
-    @apply fixed right-8 bottom-24 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-slate-200 text-slate-800 shadow-md transition-transform hover:scale-110 focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 focus:outline-none dark:bg-slate-800 dark:text-slate-200;
+    @apply fixed right-8 bottom-24 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-slate-200 text-slate-800 shadow-md transition-transform hover:scale-110 focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 focus:outline-none;
+  }
+
+  [data-theme="dark"] .theme-toggle-btn {
+    @apply bg-slate-800 text-slate-200;
   }
 
   /* Modal Estrutura */
@@ -60,11 +64,19 @@
   }
 
   .modal-box {
-    @apply max-h-[90vh] w-full max-w-md overflow-y-auto rounded-xl border-slate-200 bg-white p-6 text-slate-900 shadow-xl dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100;
+    @apply max-h-[90vh] w-full max-w-md overflow-y-auto rounded-xl border-slate-200 bg-white p-6 text-slate-900 shadow-xl;
+  }
+
+  [data-theme="dark"] .modal-box {
+    @apply border-slate-800 bg-slate-900 text-slate-100;
   }
 
   .modal-header {
-    @apply flex items-center justify-between border-b border-slate-200 pb-4 dark:border-slate-800;
+    @apply flex items-center justify-between border-b border-slate-200 pb-4;
+  }
+
+  [data-theme="dark"] .modal-header {
+    @apply border-slate-800;
   }
 
   .modal-title {
@@ -72,7 +84,11 @@
   }
 
   .modal-close-btn {
-    @apply rounded-lg p-1.5 text-slate-400 transition-colors duration-150 hover:bg-slate-100 hover:text-slate-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none dark:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-slate-300;
+    @apply rounded-lg p-1.5 text-slate-400 transition-colors duration-150 hover:bg-slate-100 hover:text-slate-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none;
+  }
+
+  [data-theme="dark"] .modal-close-btn {
+    @apply text-slate-500 hover:bg-slate-800 hover:text-slate-300;
   }
 
   .modal-body {
@@ -85,15 +101,27 @@
   }
 
   .control-label {
-    @apply mb-2 text-xs font-bold text-slate-600 dark:text-slate-400;
+    @apply mb-2 text-xs font-bold text-slate-600;
+  }
+
+  [data-theme="dark"] .control-label {
+    @apply text-slate-400;
   }
 
   .slider-input {
-    @apply h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none dark:bg-slate-700;
+    @apply h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none;
+  }
+
+  [data-theme="dark"] .slider-input {
+    @apply bg-slate-700;
   }
 
   .select-input {
-    @apply w-full rounded-lg border border-slate-300 bg-slate-50 p-2.5 text-sm text-slate-900 transition-all duration-150 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100;
+    @apply w-full rounded-lg border border-slate-300 bg-slate-50 p-2.5 text-sm text-slate-900 transition-all duration-150 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none;
+  }
+
+  [data-theme="dark"] .select-input {
+    @apply border-slate-700 bg-slate-800 text-slate-100;
   }
 
   .checkbox-group {
@@ -101,20 +129,36 @@
   }
 
   .checkbox-input {
-    @apply h-4 w-4 cursor-pointer rounded border-slate-300 bg-white text-blue-600 focus:ring-blue-500 focus:ring-offset-2 dark:border-slate-700 dark:bg-slate-800;
+    @apply h-4 w-4 cursor-pointer rounded border-slate-300 bg-white text-blue-600 focus:ring-blue-500 focus:ring-offset-2;
+  }
+
+  [data-theme="dark"] .checkbox-input {
+    @apply border-slate-700 bg-slate-800;
   }
 
   /* Rodapé do Modal e Botões de Ação */
   .modal-footer {
-    @apply mt-2 flex justify-between border-t border-slate-200 pt-4 dark:border-slate-800;
+    @apply mt-2 flex justify-between border-t border-slate-200 pt-4;
+  }
+
+  [data-theme="dark"] .modal-footer {
+    @apply border-slate-800;
   }
 
   .btn-reset {
-    @apply flex items-center gap-2 rounded-lg border border-slate-300 bg-transparent px-4 py-2 text-sm font-bold text-slate-600 transition-all duration-150 hover:bg-slate-50 hover:text-slate-800 focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 focus:outline-none active:bg-slate-100 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200 dark:active:bg-slate-900;
+    @apply flex items-center gap-2 rounded-lg border border-slate-300 bg-transparent px-4 py-2 text-sm font-bold text-slate-600 transition-all duration-150 hover:bg-slate-50 hover:text-slate-800 focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 focus:outline-none active:bg-slate-100;
+  }
+
+  [data-theme="dark"] .btn-reset {
+    @apply border-slate-700 text-slate-400 hover:bg-slate-800 hover:text-slate-200 active:bg-slate-900;
   }
 
   .btn-apply {
-    @apply rounded-lg bg-blue-600 px-5 py-2 text-sm font-bold text-white shadow-sm shadow-blue-600/10 transition-all duration-150 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none active:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-500 dark:active:bg-blue-700;
+    @apply rounded-lg bg-blue-600 px-5 py-2 text-sm font-bold text-white shadow-sm shadow-blue-600/10 transition-all duration-150 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none active:bg-blue-800;
+  }
+
+  [data-theme="dark"] .btn-apply {
+    @apply bg-blue-600 hover:bg-blue-500 active:bg-blue-700;
   }
 
   /* Componente de Áudio (Suporte por Voz) */
@@ -123,14 +167,26 @@
   }
 
   .audio-btn-label {
-    @apply mb-2 text-xs font-bold text-slate-600 dark:text-slate-400;
+    @apply mb-2 text-xs font-bold text-slate-600;
+  }
+
+  [data-theme="dark"] .audio-btn-label {
+    @apply text-slate-400;
   }
 
   .audio-btn-active {
-    @apply flex w-full items-center justify-center gap-2 rounded-lg bg-red-100 p-3 text-sm font-bold text-red-700 transition-colors hover:bg-red-200 focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:outline-none dark:bg-red-950 dark:text-red-300;
+    @apply flex w-full items-center justify-center gap-2 rounded-lg bg-red-100 p-3 text-sm font-bold text-red-700 transition-colors hover:bg-red-200 focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:outline-none;
+  }
+
+  [data-theme="dark"] .audio-btn-active {
+    @apply bg-red-950 text-red-300 hover:bg-red-900;
   }
 
   .audio-btn-inactive {
-    @apply flex w-full items-center justify-center gap-2 rounded-lg bg-blue-50 p-3 text-sm font-bold text-blue-700 transition-colors hover:bg-blue-100 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none dark:bg-slate-800 dark:text-blue-300 dark:hover:bg-slate-700;
+    @apply flex w-full items-center justify-center gap-2 rounded-lg bg-blue-50 p-3 text-sm font-bold text-blue-700 transition-colors hover:bg-blue-100 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none;
+  }
+
+  [data-theme="dark"] .audio-btn-inactive {
+    @apply bg-slate-800 text-blue-300 hover:bg-slate-700;
   }
 }
