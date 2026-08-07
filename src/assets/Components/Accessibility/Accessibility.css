@@ -14,7 +14,7 @@
   }
 
   /* 2. Paleta de Cores para tema Calmo (Dislexia, TDAH, Down) */
-  [data-theme="foco-calmo"] {
+  [data-theme="calmo"] {
     --bck-color: #f8fafc; /* Cinza Gelo */
     --surface-color: #e2e8f0; /* Cinza Médio (Divisores e Cards) */
     --text-color: #0f172a; /* Azul Profundo */
@@ -23,7 +23,7 @@
   }
 
   /* 3. Paleta de Cores para tema Alta Distinção (Daltonismo, Protanopia, Deuteranopia) */
-  [data-theme="alta-distincao"] {
+  [data-theme="alta-definicao"] {
     --bck-color: #ffffff; /* Branco Puro */
     --surface-color: #fffbeb; /* Creme Suave (Destaques) */
     --text-color: #334155; /* Cinza Carvão */
