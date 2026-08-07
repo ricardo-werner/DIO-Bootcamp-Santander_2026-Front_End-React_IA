@@ -10,10 +10,6 @@ html {
   color-scheme: light;
 }
 
-html[data-theme="dark"] {
-  color-scheme: dark;
-}
-
 html,
 body,
 #root {
@@ -28,6 +24,37 @@ body,
   --app-text: #0f172a;
   --app-muted: #475569;
   --app-shadow: 0 28px 90px rgba(15, 23, 42, 0.12);
+  --acc-theme-toggle-bg: #e2e8f0;
+  --acc-theme-toggle-text: #1e293b;
+  --acc-modal-bg: #ffffff;
+  --acc-modal-text: #0f172a;
+  --acc-modal-border: #e2e8f0;
+  --acc-modal-header-border: #e2e8f0;
+  --acc-modal-close-text: #94a3b8;
+  --acc-modal-close-hover-bg: #f1f5f9;
+  --acc-modal-close-hover-text: #475569;
+  --acc-control-label-text: #475569;
+  --acc-slider-bg: #e2e8f0;
+  --acc-select-bg: #f8fafc;
+  --acc-select-text: #0f172a;
+  --acc-select-border: #cbd5e1;
+  --acc-checkbox-bg: #ffffff;
+  --acc-checkbox-border: #cbd5e1;
+  --acc-modal-footer-border: #e2e8f0;
+  --acc-btn-reset-border: #cbd5e1;
+  --acc-btn-reset-text: #475569;
+  --acc-btn-reset-hover-bg: #f8fafc;
+  --acc-btn-reset-hover-text: #1e293b;
+  --acc-btn-reset-active-bg: #f1f5f9;
+  --acc-btn-apply-hover-bg: #1d4ed8;
+  --acc-btn-apply-active-bg: #1e40af;
+  --acc-audio-label-text: #475569;
+  --acc-audio-active-bg: #fee2e2;
+  --acc-audio-active-text: #b91c1c;
+  --acc-audio-active-hover-bg: #fecaca;
+  --acc-audio-inactive-bg: #eff6ff;
+  --acc-audio-inactive-text: #1d4ed8;
+  --acc-audio-inactive-hover-bg: #dbeafe;
 
   /* Tipografia: Acessibilidade WCAG 2.1 */
   /* 1. Heading / H1-H3 - Baixa Visão */
@@ -63,6 +90,7 @@ body,
 }
 
 html[data-theme="dark"] {
+  color-scheme: dark;
   --app-bg: #020617;
   --app-bg-end: #0f172a;
   --app-surface: rgba(15, 23, 42, 0.86);
@@ -70,6 +98,37 @@ html[data-theme="dark"] {
   --app-text: #e2e8f0;
   --app-muted: #94a3b8;
   --app-shadow: 0 28px 90px rgba(2, 6, 23, 0.5);
+  --acc-theme-toggle-bg: #1e293b;
+  --acc-theme-toggle-text: #e2e8f0;
+  --acc-modal-bg: #0f172a;
+  --acc-modal-text: #e2e8f0;
+  --acc-modal-border: #1e293b;
+  --acc-modal-header-border: #1e293b;
+  --acc-modal-close-text: #64748b;
+  --acc-modal-close-hover-bg: #1e293b;
+  --acc-modal-close-hover-text: #cbd5e1;
+  --acc-control-label-text: #94a3b8;
+  --acc-slider-bg: #334155;
+  --acc-select-bg: #1e293b;
+  --acc-select-text: #e2e8f0;
+  --acc-select-border: #334155;
+  --acc-checkbox-bg: #1e293b;
+  --acc-checkbox-border: #334155;
+  --acc-modal-footer-border: #1e293b;
+  --acc-btn-reset-border: #334155;
+  --acc-btn-reset-text: #94a3b8;
+  --acc-btn-reset-hover-bg: #1e293b;
+  --acc-btn-reset-hover-text: #e2e8f0;
+  --acc-btn-reset-active-bg: #0f172a;
+  --acc-btn-apply-hover-bg: #3b82f6;
+  --acc-btn-apply-active-bg: #1d4ed8;
+  --acc-audio-label-text: #94a3b8;
+  --acc-audio-active-bg: #450a0a;
+  --acc-audio-active-text: #fca5a5;
+  --acc-audio-active-hover-bg: #7f1d1d;
+  --acc-audio-inactive-bg: #1e293b;
+  --acc-audio-inactive-text: #93c5fd;
+  --acc-audio-inactive-hover-bg: #334155;
 }
 
 body {

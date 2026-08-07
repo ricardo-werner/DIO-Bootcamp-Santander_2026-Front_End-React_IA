@@ -51,11 +51,9 @@
   }
 
   .theme-toggle-btn {
-    @apply fixed right-8 bottom-24 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-slate-200 text-slate-800 shadow-md transition-transform hover:scale-110 focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 focus:outline-none;
-  }
-
-  [data-theme="dark"] .theme-toggle-btn {
-    @apply bg-slate-800 text-slate-200;
+    @apply fixed right-8 bottom-24 z-50 flex h-14 w-14 items-center justify-center rounded-full shadow-md transition-transform hover:scale-110 focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 focus:outline-none;
+    background: var(--acc-theme-toggle-bg);
+    color: var(--acc-theme-toggle-text);
   }
 
   /* Modal Estrutura */
@@ -64,19 +62,15 @@
   }
 
   .modal-box {
-    @apply max-h-[90vh] w-full max-w-md overflow-y-auto rounded-xl border-slate-200 bg-white p-6 text-slate-900 shadow-xl;
-  }
-
-  [data-theme="dark"] .modal-box {
-    @apply border-slate-800 bg-slate-900 text-slate-100;
+    @apply max-h-[90vh] w-full max-w-md overflow-y-auto rounded-xl p-6 shadow-xl;
+    background: var(--acc-modal-bg);
+    border: 1px solid var(--acc-modal-border);
+    color: var(--acc-modal-text);
   }
 
   .modal-header {
-    @apply flex items-center justify-between border-b border-slate-200 pb-4;
-  }
-
-  [data-theme="dark"] .modal-header {
-    @apply border-slate-800;
+    @apply flex items-center justify-between pb-4;
+    border-bottom: 1px solid var(--acc-modal-header-border);
   }
 
   .modal-title {
@@ -84,11 +78,13 @@
   }
 
   .modal-close-btn {
-    @apply rounded-lg p-1.5 text-slate-400 transition-colors duration-150 hover:bg-slate-100 hover:text-slate-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none;
+    @apply rounded-lg p-1.5 transition-colors duration-150 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none;
+    color: var(--acc-modal-close-text);
   }
 
-  [data-theme="dark"] .modal-close-btn {
-    @apply text-slate-500 hover:bg-slate-800 hover:text-slate-300;
+  .modal-close-btn:hover {
+    background: var(--acc-modal-close-hover-bg);
+    color: var(--acc-modal-close-hover-text);
   }
 
   .modal-body {
@@ -101,27 +97,20 @@
   }
 
   .control-label {
-    @apply mb-2 text-xs font-bold text-slate-600;
-  }
-
-  [data-theme="dark"] .control-label {
-    @apply text-slate-400;
+    @apply mb-2 text-xs font-bold;
+    color: var(--acc-control-label-text);
   }
 
   .slider-input {
-    @apply h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none;
-  }
-
-  [data-theme="dark"] .slider-input {
-    @apply bg-slate-700;
+    @apply h-2 w-full cursor-pointer appearance-none rounded-lg accent-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none;
+    background: var(--acc-slider-bg);
   }
 
   .select-input {
-    @apply w-full rounded-lg border border-slate-300 bg-slate-50 p-2.5 text-sm text-slate-900 transition-all duration-150 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none;
-  }
-
-  [data-theme="dark"] .select-input {
-    @apply border-slate-700 bg-slate-800 text-slate-100;
+    @apply w-full rounded-lg p-2.5 text-sm transition-all duration-150 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none;
+    background: var(--acc-select-bg);
+    border: 1px solid var(--acc-select-border);
+    color: var(--acc-select-text);
   }
 
   .checkbox-group {
@@ -129,36 +118,44 @@
   }
 
   .checkbox-input {
-    @apply h-4 w-4 cursor-pointer rounded border-slate-300 bg-white text-blue-600 focus:ring-blue-500 focus:ring-offset-2;
-  }
-
-  [data-theme="dark"] .checkbox-input {
-    @apply border-slate-700 bg-slate-800;
+    @apply h-4 w-4 cursor-pointer rounded text-blue-600 focus:ring-blue-500 focus:ring-offset-2;
+    background: var(--acc-checkbox-bg);
+    border: 1px solid var(--acc-checkbox-border);
   }
 
   /* Rodapé do Modal e Botões de Ação */
   .modal-footer {
-    @apply mt-2 flex justify-between border-t border-slate-200 pt-4;
-  }
-
-  [data-theme="dark"] .modal-footer {
-    @apply border-slate-800;
+    @apply mt-2 flex justify-between pt-4;
+    border-top: 1px solid var(--acc-modal-footer-border);
   }
 
   .btn-reset {
-    @apply flex items-center gap-2 rounded-lg border border-slate-300 bg-transparent px-4 py-2 text-sm font-bold text-slate-600 transition-all duration-150 hover:bg-slate-50 hover:text-slate-800 focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 focus:outline-none active:bg-slate-100;
+    @apply flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-bold transition-all duration-150 focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 focus:outline-none;
+    background: transparent;
+    border: 1px solid var(--acc-btn-reset-border);
+    color: var(--acc-btn-reset-text);
   }
 
-  [data-theme="dark"] .btn-reset {
-    @apply border-slate-700 text-slate-400 hover:bg-slate-800 hover:text-slate-200 active:bg-slate-900;
+  .btn-reset:hover {
+    background: var(--acc-btn-reset-hover-bg);
+    color: var(--acc-btn-reset-hover-text);
+  }
+
+  .btn-reset:active {
+    background: var(--acc-btn-reset-active-bg);
   }
 
   .btn-apply {
-    @apply rounded-lg bg-blue-600 px-5 py-2 text-sm font-bold text-white shadow-sm shadow-blue-600/10 transition-all duration-150 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none active:bg-blue-800;
+    @apply rounded-lg px-5 py-2 text-sm font-bold text-white shadow-sm shadow-blue-600/10 transition-all duration-150 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none;
+    background: #2563eb;
   }
 
-  [data-theme="dark"] .btn-apply {
-    @apply bg-blue-600 hover:bg-blue-500 active:bg-blue-700;
+  .btn-apply:hover {
+    background: var(--acc-btn-apply-hover-bg);
+  }
+
+  .btn-apply:active {
+    background: var(--acc-btn-apply-active-bg);
   }
 
   /* Componente de Áudio (Suporte por Voz) */
@@ -167,26 +164,27 @@
   }
 
   .audio-btn-label {
-    @apply mb-2 text-xs font-bold text-slate-600;
-  }
-
-  [data-theme="dark"] .audio-btn-label {
-    @apply text-slate-400;
+    @apply mb-2 text-xs font-bold;
+    color: var(--acc-audio-label-text);
   }
 
   .audio-btn-active {
-    @apply flex w-full items-center justify-center gap-2 rounded-lg bg-red-100 p-3 text-sm font-bold text-red-700 transition-colors hover:bg-red-200 focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:outline-none;
+    @apply flex w-full items-center justify-center gap-2 rounded-lg p-3 text-sm font-bold transition-colors focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:outline-none;
+    background: var(--acc-audio-active-bg);
+    color: var(--acc-audio-active-text);
   }
 
-  [data-theme="dark"] .audio-btn-active {
-    @apply bg-red-950 text-red-300 hover:bg-red-900;
+  .audio-btn-active:hover {
+    background: var(--acc-audio-active-hover-bg);
   }
 
   .audio-btn-inactive {
-    @apply flex w-full items-center justify-center gap-2 rounded-lg bg-blue-50 p-3 text-sm font-bold text-blue-700 transition-colors hover:bg-blue-100 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none;
+    @apply flex w-full items-center justify-center gap-2 rounded-lg p-3 text-sm font-bold transition-colors focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none;
+    background: var(--acc-audio-inactive-bg);
+    color: var(--acc-audio-inactive-text);
   }
 
-  [data-theme="dark"] .audio-btn-inactive {
-    @apply bg-slate-800 text-blue-300 hover:bg-slate-700;
+  .audio-btn-inactive:hover {
+    background: var(--acc-audio-inactive-hover-bg);
   }
 }
