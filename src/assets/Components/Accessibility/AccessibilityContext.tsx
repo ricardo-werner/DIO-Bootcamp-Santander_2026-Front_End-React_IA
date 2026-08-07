@@ -52,11 +52,14 @@ export function AccessibilityProvider({
     localStorage.setItem("acc_color_blindness", colorBlindness);
     localStorage.setItem("acc_color_palette", colorPalette);
 
-    // Aplicação exata do meu modelo:
-    // Injeta o atributo data-theme na raiz do documento (html) para ativar as variáveis CSS
-    document.documentElement.setAttribute("data-theme", colorPalette);
+    const themeMode = darkMode ? "dark" : "light";
+
+    // Tema global separado da paleta de acessibilidade.
+    // data-theme controla o modo claro/escuro e data-palette controla as cores funcionais.
+    document.documentElement.setAttribute("data-theme", themeMode);
+    document.documentElement.setAttribute("data-palette", colorPalette);
     document.documentElement.classList.toggle("dark", darkMode);
-    document.documentElement.style.colorScheme = darkMode ? "dark" : "light";
+    document.documentElement.style.colorScheme = themeMode;
   }, [
     fontSize,
     lineHeight,

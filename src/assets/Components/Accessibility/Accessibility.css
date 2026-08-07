@@ -5,7 +5,7 @@
 
   /* 1. Paleta de Cores para tema Padrão - Contraste Universal (BAixa Visão / Fotofobia ) */
   :root,
-  [data-theme="universal"] {
+  [data-palette="universal"] {
     --bck-color: #0b0f19; /* Preto Profundo */
     --surface-color: #1e293b; /* Cinza Escuro (Cards e Modais) */
     --text-color: #ffffff; /* Branco Puro */
@@ -14,7 +14,7 @@
   }
 
   /* 2. Paleta de Cores para tema Calmo (Dislexia, TDAH, Down) */
-  [data-theme="calmo"] {
+  [data-palette="calmo"] {
     --bck-color: #f8fafc; /* Cinza Gelo */
     --surface-color: #e2e8f0; /* Cinza Médio (Divisores e Cards) */
     --text-color: #0f172a; /* Azul Profundo */
@@ -23,7 +23,7 @@
   }
 
   /* 3. Paleta de Cores para tema Alta Distinção (Daltonismo, Protanopia, Deuteranopia) */
-  [data-theme="alta-definicao"] {
+  [data-palette="alta-definicao"] {
     --bck-color: #ffffff; /* Branco Puro */
     --surface-color: #fffbeb; /* Creme Suave (Destaques) */
     --text-color: #334155; /* Cinza Carvão */
@@ -51,7 +51,7 @@
   }
 
   .theme-toggle-btn {
-    @apply shadow-md fixed right-8 bottom-24 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-slate-200 text-slate-800 transition-transform hover:scale-110 focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 focus:outline-none dark:bg-slate-800 dark:text-slate-200;
+    @apply fixed right-8 bottom-24 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-slate-200 text-slate-800 shadow-md transition-transform hover:scale-110 focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 focus:outline-none dark:bg-slate-800 dark:text-slate-200;
   }
 
   /* Modal Estrutura */
@@ -72,7 +72,7 @@
   }
 
   .modal-close-btn {
-    @apply dark:hover:text-slate-300 rounded-lg p-1.5 text-slate-400 transition-colors duration-150 hover:bg-slate-100 hover:text-slate-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none dark:text-slate-500 dark:hover:bg-slate-800;
+    @apply rounded-lg p-1.5 text-slate-400 transition-colors duration-150 hover:bg-slate-100 hover:text-slate-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none dark:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-slate-300;
   }
 
   .modal-body {
@@ -85,11 +85,11 @@
   }
 
   .control-label {
-    @apply dark:text-slate-400 mb-2 text-xs font-bold text-slate-600;
+    @apply mb-2 text-xs font-bold text-slate-600 dark:text-slate-400;
   }
 
   .slider-input {
-    @apply focus:ring-2 h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none dark:bg-slate-700;
+    @apply h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none dark:bg-slate-700;
   }
 
   .select-input {
@@ -131,6 +131,6 @@
   }
 
   .audio-btn-inactive {
-    @apply w-full flex items-center justify-center gap-2 p-3 rounded-lg text-sm font-bold transition-colors bg-blue-50 dark:bg-slate-800 text-blue-700 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+    @apply flex w-full items-center justify-center gap-2 rounded-lg bg-blue-50 p-3 text-sm font-bold text-blue-700 transition-colors hover:bg-blue-100 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none dark:bg-slate-800 dark:text-blue-300 dark:hover:bg-slate-700;
   }
 }
