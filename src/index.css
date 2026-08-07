@@ -6,6 +6,49 @@
   padding: 0;
 }
 
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--ff-body);
+  background:
+    radial-gradient(circle at top, rgba(37, 99, 235, 0.12), transparent 32%),
+    linear-gradient(180deg, var(--app-bg), var(--bck-color));
+  color: var(--app-text);
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
+}
+
+html.dark {
+  --app-bg: #020617;
+  --app-surface: rgba(15, 23, 42, 0.86);
+  --app-surface-border: rgba(148, 163, 184, 0.18);
+  --app-text: #e2e8f0;
+  --app-muted: #94a3b8;
+  --app-shadow: 0 28px 90px rgba(2, 6, 23, 0.5);
+}
+
+:root {
+  --app-bg: #f8fafc;
+  --app-surface: rgba(255, 255, 255, 0.82);
+  --app-surface-border: rgba(148, 163, 184, 0.24);
+  --app-text: #0f172a;
+  --app-muted: #475569;
+  --app-shadow: 0 28px 90px rgba(15, 23, 42, 0.12);
+}
+
 :root {
   /* Tipografia: Acessibilidade WCAG 2.1 */
   /* 1. Heading / H1-H3 - Baixa Visão */
