@@ -73,3 +73,54 @@ export default defineConfig([
 ])
 
 ```
+
+## Estudo: toggle de tema e acessibilidade
+
+Este projeto foi um bom exemplo de um ponto importante em React: **mudar o estado não significa, automaticamente, mudar a interface inteira**.
+
+### O que acontecia
+
+- o botão de dia/noite alternava o estado corretamente;
+- o ícone mudava;
+- partes internas do painel reagiam;
+- mas a página principal parecia não mudar.
+
+### Por que isso aconteceu
+
+O estado do tema estava sendo alterado no React, mas a aplicação visual não estava totalmente conectada a esse estado.
+
+Em outras palavras:
+
+- o React sabia que o tema tinha mudado;
+- o CSS da página inteira não estava ouvindo essa mudança do jeito ideal.
+
+### O que foi ajustado
+
+- o tema global passou a ser controlado com `data-theme="light|dark"` no elemento `html`;
+- a paleta de acessibilidade foi separada em `data-palette`;
+- as cores da interface passaram a usar variáveis CSS globais;
+- os estilos do modal e dos botões foram simplificados para evitar duplicidade;
+- a dependência da classe `dark` foi removida.
+
+### O que aprender com isso
+
+1. **Estado em React** controla dados e comportamento.
+2. **CSS global** é o que faz a aparência mudar de verdade na tela.
+3. **Separar responsabilidades** deixa o código mais fácil de manter.
+4. **Variáveis CSS** são ótimas para temas claros/escuros.
+
+### Resumo mental
+
+Pense assim:
+
+- o React guarda o valor do tema;
+- o `html` recebe esse valor;
+- o CSS lê esse valor e muda a aparência da página.
+
+Se quiser estudar esse fluxo depois, os arquivos principais são:
+
+- `src/assets/Components/Accessibility/AccessibilityContext.tsx`
+- `src/assets/Components/Accessibility/Accessibility.css`
+- `src/index.css`
+
+Esse padrão é muito útil em projetos reais porque evita que o tema fique preso só em um componente.
