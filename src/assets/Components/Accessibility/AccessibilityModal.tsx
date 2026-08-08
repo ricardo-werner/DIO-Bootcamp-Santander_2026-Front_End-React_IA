@@ -1,6 +1,6 @@
 import "./Accessibility.css";
 
-import { Eye, Moon, RefreshCw, Sun, X } from "lucide-react";
+import { Moon, RefreshCw, Sun, X } from "lucide-react";
 
 import { useAccessibility } from "../Accessibility/Hooks/context";
 
@@ -63,14 +63,14 @@ export default function AccessibilityModal() {
         {darkMode ? <Sun size={24} /> : <Moon size={24} />}
       </button>
 
-      <button
+      {/* <button
         onClick={toggleModal}
         className="floating-accessibility-btn"
         aria-label="Abrir painel de acessibilidade"
         aria-haspopup="dialog"
       >
         <Eye size={24} />
-      </button>
+      </button> */}
 
       {isModalOpen && (
         <div onClick={toggleModal} className="modal-overlay">
