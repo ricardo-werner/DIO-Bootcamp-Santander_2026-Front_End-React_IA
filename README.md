@@ -7,7 +7,7 @@
 ![Google Gemini](https://img.shields.io/badge/Google_Gemini_AI-Flash-8E75B2?style=for-the-badge&logo=google&logoColor=white)
 
 > **Transforme seus objetivos financeiros em planos realizáveis.**  
-> O **PrumIA** é uma aplicação web moderna de educação financeira que combina simulação de metas (cálculos de aporte necessário, prazos e comprometimento de renda) com a inteligência artificial do **Google Gemini** para fornecer diagnósticos, conselhos práticos, sugestões de investimento e estratégias de renda extra adaptados ao perfil de cada usuário.
+> O **PrumIA** é uma aplicação web moderna de educação financeira que combina simulação de metas (cálculos de aporte necessário, prazos e comprometimento de renda) com a inteligência artificial do **Google Gemini** para fornecer diagnósticos, conselhos práticos de reorganização orçamentária e estratégias de renda extra adaptados ao perfil de cada usuário.
 
 ---
 
