@@ -3,10 +3,10 @@ import "@/App.css";
 import { PersonStanding } from "lucide-react";
 import { RouterProvider } from "react-router-dom";
 
-import { AccessibilityProvider } from "@/assets/Components/Accessibility/AccessibilityContext";
-import AccessibilityModal from "@/assets/Components/Accessibility/AccessibilityModal";
-import { useAccessibility } from "@/assets/Components/Accessibility/Hooks/context";
-import { router } from "@/assets/Routers/router";
+import { AccessibilityProvider } from "@/components/Accessibility/AccessibilityContext";
+import AccessibilityModal from "@/components/Accessibility/AccessibilityModal";
+import { useAccessibility } from "@/components/Accessibility/Hooks/context";
+import { router } from "@/routers/router";
 
 function AppContent() {
   const { toggleModal } = useAccessibility();

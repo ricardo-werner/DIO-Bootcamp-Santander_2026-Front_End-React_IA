@@ -1,7 +1,3 @@
-import 'react-loading-skeleton/dist/skeleton.css'
-
-import Skeleton from 'react-loading-skeleton'
-
 import { useInsight } from '@/hooks/useInsight'
 
 import { Content } from '../Insights/Content'
@@ -11,9 +7,19 @@ interface AIInsightCardProps {
   simulationId: string
 }
 
+function SkeletonLoader() {
+  return (
+    <div className="animate-pulse space-y-3 py-2">
+      <div className="bg-muted/40 h-4 w-3/4 rounded-md"></div>
+      <div className="bg-muted/40 h-4 w-full rounded-md"></div>
+      <div className="bg-muted/40 h-4 w-5/6 rounded-md"></div>
+      <div className="bg-muted/40 h-4 w-2/3 rounded-md"></div>
+    </div>
+  )
+}
+
 export function AIInsightsCard({ simulationId }: AIInsightCardProps) {
   const { insight, isLoading, error, fetchInsight } = useInsight(simulationId)
-  console.log(insight)
 
   return (
     <div className="bg-card order-2 rounded-2xl p-6 shadow-[4px_4px_18px_0px_rgba(0,0,0,0.2)] lg:order-1 lg:col-span-2">
@@ -24,18 +30,7 @@ export function AIInsightsCard({ simulationId }: AIInsightCardProps) {
         </span>
       </div>
 
-      {isLoading && (
-        <div className="flex">
-          <Skeleton
-            count={10.5}
-            baseColor="var(--color-skeleton-base)"
-            highlightColor="var(--color-skeleton-highlight)"
-            className="mb-3 flex rounded-lg"
-            containerClassName="flex-1"
-            inline
-          />
-        </div>
-      )}
+      {isLoading && <SkeletonLoader />}
       {!isLoading && error && (
         <Error
           simulationId={simulationId}
