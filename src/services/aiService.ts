@@ -50,6 +50,10 @@ const callGeminiAPI = async (prompt: string) => {
 
 export const getInsight = async (prompt: string) => {
   const response = await callGeminiAPI(prompt)
-  const json = response.candidates[0].content.parts[0].text
-  return JSON.parse(json) as InsightData
+  const rawText = response.candidates?.[0]?.content?.parts?.[0]?.text ?? '{}'
+  const cleanJsonText = rawText
+    .replace(/^```(?:json)?/gim, '')
+    .replace(/```$/gim, '')
+    .trim()
+  return JSON.parse(cleanJsonText) as InsightData
 }
