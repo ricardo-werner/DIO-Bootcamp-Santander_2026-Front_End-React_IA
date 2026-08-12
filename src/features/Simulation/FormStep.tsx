@@ -60,13 +60,16 @@ export function FormStep({
         <Input
           {...inputProps}
           value={inputValue}
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setInputValue(
-              inputProps.prefix === 'R$'
-                ? formatCurrencyMask(e.target.value)
-                : e.target.value,
-            )
-          }
+          onChange={(e: ChangeEvent<HTMLInputElement>) => {
+            const rawVal = e.target.value
+            if (inputProps.prefix === 'R$') {
+              setInputValue(formatCurrencyMask(rawVal))
+            } else if (inputProps.type === 'number') {
+              setInputValue(rawVal.replace(/\D/g, ''))
+            } else {
+              setInputValue(rawVal)
+            }
+          }}
         />
         <div className="flex flex-col gap-3 sm:flex-row sm:gap-6">
           {!hideBackButton && (
