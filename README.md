@@ -1,126 +1,148 @@
-# React + TypeScript + Vite
+# 💰 PrumIA - Educador Financeiro Inteligente com IA
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-8.0-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![Google Gemini](https://img.shields.io/badge/Google_Gemini_AI-Flash-8E75B2?style=for-the-badge&logo=google&logoColor=white)
 
-Currently, two official plugins are available:
+> **Transforme seus objetivos financeiros em planos realizáveis.**  
+> O **PrumIA** é uma aplicação web moderna de educação financeira que combina simulação de metas (cálculos de aporte necessário, prazos e comprometimento de renda) com a inteligência artificial do **Google Gemini** para fornecer diagnósticos, conselhos práticos, sugestões de investimento e estratégias de renda extra adaptados ao perfil de cada usuário.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🌟 Principais Funcionalidades
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Simulação Financeira Guiada (Formulário Multi-passos)**:
+  - Definição do Nome e Valor da Meta (`R$`).
+  - Definição do Prazo desejado em Meses.
+  - Apuração de Renda Mensal Bruta, Custos Fixos de Vida e Valor de Dívidas/Parcelas.
+  - Cálculo automático instantâneo da economia mensal necessária.
 
-## Expanding the ESLint configuration
+- **Diagnósticos e Insights Gerados por IA (Google Gemini)**:
+  - **Status de Viabilidade**: Classificação automática entre *Meta Viável no Prazo*, *Ajuste Necessário* ou *Inviável no Prazo*.
+  - **Diagnóstico Financeiro**: Análise do comprometimento da renda em relação aos gastos fixos e dívidas.
+  - **Plano de Ação Personalizado**: Dicas práticas de redução de custos, alternativas de investimentos adequados e opções de renda extra.
+  - **Mensagem Motivacional**: Apoio comportamental para manter o foco na meta.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Histórico Local de Simulações (`/historico`)**:
+  - Armazenamento persistente das simulações via `localStorage`.
+  - Exibição de cartões resumo com valor da meta, prazo e aporte mensal necessário.
+  - Opções para reabrir o relatório completo de uma simulação antiga ou excluir registros do histórico.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Painel Avançado de Acessibilidade & Tema (WCAG 2.1)**:
+  - **Modos de Daltonismo**: Modos de contraste adaptados para Protanopia, Deuteranopia e Tritanopia.
+  - **Ajustes Tipográficos**: Controle de tamanho de fonte, altura de linha, espaçamento entre letras e suporte à fonte adaptada para Dislexia (`Lexend`).
+  - **Navegação por Teclado**: Suporte a *Skip to Content* ("Pular para o conteúdo principal") via tecla `Tab`.
+  - **Modo Escuro/Claro**: Alternância unificada de temas visuais em toda a aplicação.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🏗️ Fluxo da Aplicação
 
+```mermaid
+flowchart TD
+    A[Página Inicial / Nova Simulação] --> B[Formulário Guiado em Passos]
+    B --> C[Cálculo da Economia Mensal Necessária]
+    C --> D[Armazenamento no LocalStorage]
+    D --> E[Página de Resultados /resultado/:id]
+    E --> F[Requisição Sanitizada à API do Google Gemini]
+    F --> G[Exibição dos Insights Personalizados com IA]
+    A --> H[Página de Histórico /historico]
+    H --> I[Listar / Visualizar / Excluir Simulações Salvas]
+    I --> E
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🚀 Tecnologias Utilizadas
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Tecnologia | Descrição |
+|---|---|
+| **React 19** | Biblioteca JavaScript para construção de interfaces reativas |
+| **TypeScript** | Tipagem estática para maior segurança e qualidade do código |
+| **Vite** | Ferramenta de build rápida com suporte a Hot Module Replacement (HMR) |
+| **Tailwind CSS v4** | Framework utilitário de CSS com variáveis integradas |
+| **Google Gemini API** | Modelo generativo de IA (`gemini-flash-latest`) para educação financeira |
+| **React Router v7** | Gerenciamento de rotas e navegação na aplicação |
+| **Lucide React** | Biblioteca de ícones acessíveis e vetorizados |
 
+---
+
+## 📁 Estrutura de Pastas
+
+```text
+PrumIA/
+├── src/
+│   ├── components/      # Componentes atômicos reutilizáveis (Button, Input, Header, PageHero)
+│   ├── context/         # Provedores de contexto global (ThemeContext, AccessibilityContext)
+│   ├── data/            # Configurações de formulário e construtor de prompts para a IA
+│   ├── features/        # Módulos específicos de negócio (Simulation, SimulationResults, Insights)
+│   ├── hooks/           # Custom hooks (useInsight, useSimulationStorage, useTheme, etc.)
+│   ├── layout/          # Layout base com Header e Atalhos de Acessibilidade
+│   ├── pages/           # Páginas da aplicação (SimulationFormPage, SimulationResultsPage, SimulationHistoryPage)
+│   ├── routers/         # Configuração de rotas da aplicação
+│   ├── services/        # Serviço de comunicação com a API do Google Gemini (aiService.ts)
+│   ├── styles/          # Estilos CSS globais e variáveis de tema (theme.css)
+│   ├── utils/           # Funções utilitárias (cálculo de juros e formatação de moeda)
+│   ├── App.tsx          # Ponto de entrada com os Provedores da Aplicação
+│   └── main.tsx         # Renderização do React DOM
+├── public/              # Arquivos públicos e estáticos
+└── package.json         # Dependências e scripts do projeto
 ```
 
-## Estudo: toggle de tema e acessibilidade
+---
 
-Este projeto foi um bom exemplo de um ponto importante em React: **mudar o estado não significa, automaticamente, mudar a interface inteira**.
+## 🔧 Como Executar o Projeto Localmente
 
-### O que acontecia
+### Pré-requisitos
 
-- o botão de dia/noite alternava o estado corretamente;
-- o ícone mudava;
-- partes internas do painel reagiam;
-- mas a página principal parecia não mudar.
+- **Node.js** `v18.0.0` ou superior.
+- **npm** ou **yarn**.
+- Uma chave de API do **Google AI Studio** ([Obter chave de API gratuita](https://aistudio.google.com/)).
 
-### Por que isso aconteceu
+### Passo a Passo
 
-O estado do tema estava sendo alterado no React, mas a aplicação visual não estava totalmente conectada a esse estado.
+1. **Clonar o Repositório**:
+   ```bash
+   git clone https://github.com/ricardo-werner/DIO-Bootcamp-Santander_2026-Front_End-React_IA.git
+   cd DIO-Bootcamp-Santander_2026-Front_End-React_IA/PrumIA
+   ```
 
-Em outras palavras:
+2. **Instalar Dependências**:
+   ```bash
+   npm install
+   ```
 
-- o React sabia que o tema tinha mudado;
-- o CSS da página inteira não estava ouvindo essa mudança do jeito ideal.
+3. **Configurar a Chave da API do Gemini**:
+   Crie um arquivo `.env` na raiz do diretório `PrumIA` contendo:
+   ```env
+   VITE_GEMINI_API_KEY=SuaChaveDoGeminiAqui
+   ```
 
-### O que foi ajustado
+4. **Iniciar o Servidor de Desenvolvimento**:
+   ```bash
+   npm run dev
+   ```
+   Acesse a aplicação no seu navegador: `http://localhost:5173`
 
-- o tema global passou a ser controlado com `data-theme="light|dark"` no elemento `html`;
-- a paleta de acessibilidade foi separada em `data-palette`;
-- as cores da interface passaram a usar variáveis CSS globais;
-- os estilos do modal e dos botões foram simplificados para evitar duplicidade;
-- a dependência da classe `dark` foi removida.
+5. **Executar a Compilação para Produção (Opcional)**:
+   ```bash
+   npm run build
+   ```
 
-### O que aprender com isso
+---
 
-1. **Estado em React** controla dados e comportamento.
-2. **CSS global** é o que faz a aparência mudar de verdade na tela.
-3. **Separar responsabilidades** deixa o código mais fácil de manter.
-4. **Variáveis CSS** são ótimas para temas claros/escuros.
+## ♿ Compromisso com Acessibilidade (WCAG 2.1)
 
-### Resumo mental
+O **PrumIA** foi projetado seguindo as diretrizes universais de acessibilidade web:
+- **Navegação por Teclado**: Todo o fluxo do formulário e menu pode ser utilizado sem mouse.
+- **Leitores de Tela**: Suporte completo com atributos `aria-label`, `role="button"` e foco direcionado.
+- **Atalho Skip Link**: Pule a barra de navegação direto para o conteúdo via tecla `Tab`.
+- **Customização Visual**: Ajustes dinâmicos de contraste, fontes e auxílio a daltonismo integrados no painel flutuante.
 
-Pense assim:
+---
 
-- o React guarda o valor do tema;
-- o `html` recebe esse valor;
-- o CSS lê esse valor e muda a aparência da página.
+## 📜 Licença e Créditos
 
-Se quiser estudar esse fluxo depois, os arquivos principais são:
-
-- `src/assets/Components/Accessibility/AccessibilityContext.tsx`
-- `src/assets/Components/Accessibility/Accessibility.css`
-- `src/index.css`
-
-Esse padrão é muito útil em projetos reais porque evita que o tema fique preso só em um componente.
+Este projeto foi desenvolvido como parte do **Bootcamp Santander 2026 - Front-End & IA com React** na plataforma [DIO (Digital Innovation One)](https://www.dio.me/).
