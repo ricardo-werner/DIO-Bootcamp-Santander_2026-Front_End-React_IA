@@ -22,7 +22,7 @@
 - **Diagnósticos e Insights Gerados por IA (Google Gemini)**:
   - **Status de Viabilidade**: Classificação automática entre *Meta Viável no Prazo*, *Ajuste Necessário* ou *Inviável no Prazo*.
   - **Diagnóstico Financeiro**: Análise do comprometimento da renda em relação aos gastos fixos e dívidas.
-  - **Plano de Ação Personalizado**: Dicas práticas de redução de custos, alternativas de investimentos adequados e opções de renda extra.
+  - **Plano de Ação Personalizado**: Dicas práticas de redução de custos, reorganização do orçamento familiar e opções de renda extra.
   - **Mensagem Motivacional**: Apoio comportamental para manter o foco na meta.
 
 - **Histórico Local de Simulações (`/historico`)**:
