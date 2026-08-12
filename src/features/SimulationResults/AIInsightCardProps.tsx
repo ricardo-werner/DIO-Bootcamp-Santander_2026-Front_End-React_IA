@@ -22,7 +22,7 @@ export function AIInsightsCard({ simulationId }: AIInsightCardProps) {
   const { insight, isLoading, error, fetchInsight } = useInsight(simulationId)
 
   return (
-    <div className="bg-card order-2 rounded-2xl p-6 shadow-[4px_4px_18px_0px_rgba(0,0,0,0.2)] lg:order-1 lg:col-span-2">
+    <div className="bg-card border-border order-2 rounded-2xl border p-6 shadow-md transition-all lg:order-1 lg:col-span-2">
       <div className="mb-3 flex items-center gap-1.5">
         <span>✨</span>
         <span className="text-primary text-xs font-semibold tracking-widest uppercase">
