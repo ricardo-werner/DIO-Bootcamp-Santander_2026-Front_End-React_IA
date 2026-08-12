@@ -1,6 +1,6 @@
 import "./Accessibility.css";
 
-import { Moon, RefreshCw, Sun, X } from "lucide-react";
+import { RefreshCw, X } from "lucide-react";
 
 import { useAccessibility } from "../Accessibility/Hooks/context";
 
@@ -44,8 +44,6 @@ export default function AccessibilityModal() {
     setLetterSpacing,
     isDyslexicFont,
     setIsDyslexicFont,
-    darkMode,
-    toggleDarkMode,
     colorBlindness,
     setColorBlindness,
     colorPalette,
@@ -55,13 +53,6 @@ export default function AccessibilityModal() {
 
   return (
     <>
-      <button
-        onClick={toggleDarkMode}
-        className="theme-toggle-btn"
-        aria-label="Alternar modo claro e escuro"
-      >
-        {darkMode ? <Sun size={24} /> : <Moon size={24} />}
-      </button>
 
       {/* <button
         onClick={toggleModal}

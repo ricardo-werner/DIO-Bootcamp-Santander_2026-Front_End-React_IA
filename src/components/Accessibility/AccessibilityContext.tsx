@@ -1,8 +1,14 @@
 import { type ReactNode, useEffect, useState } from "react";
 
+import { useTheme } from "@/hooks/useTheme";
+
 import { AccessibilityContext } from "../Accessibility/Hooks/context";
 
 export function AccessibilityProvider({ children }: { children: ReactNode }) {
+  const { theme, toggleTheme } = useTheme();
+  const darkMode = theme === "dark";
+  const toggleDarkMode = toggleTheme;
+
   const normalizeColorPalette = (value: string | null) => {
     if (value === "foco-calmo") return "calmo";
     if (value === "alta-distincao") return "alta-definicao";
@@ -31,14 +37,10 @@ export function AccessibilityProvider({ children }: { children: ReactNode }) {
   const [isDyslexicFont, setIsDyslexicFont] = useState<boolean>(
     () => localStorage.getItem("acc_dyslexic_font") === "true",
   );
-  const [darkMode, setDarkMode] = useState<boolean>(
-    () => localStorage.getItem("acc_dark_mode") === "true",
-  );
   const [colorBlindness, setColorBlindness] = useState<string>(
     () => localStorage.getItem("acc_color_blindness") || "none",
   );
 
-  // NOVO: Armazena e inicializa a paleta de cores preferida
   const [colorPalette, setColorPalette] = useState<string>(() =>
     normalizeColorPalette(localStorage.getItem("acc_color_palette")),
   );
@@ -48,29 +50,20 @@ export function AccessibilityProvider({ children }: { children: ReactNode }) {
     localStorage.setItem("acc_line_height", lineHeight.toString());
     localStorage.setItem("acc_letter_spacing", letterSpacing.toString());
     localStorage.setItem("acc_dyslexic_font", isDyslexicFont.toString());
-    localStorage.setItem("acc_dark_mode", darkMode.toString());
     localStorage.setItem("acc_color_blindness", colorBlindness);
     localStorage.setItem("acc_color_palette", colorPalette);
 
-    const themeMode = darkMode ? "dark" : "light";
-
-    // Tema global separado da paleta de acessibilidade.
-    // data-theme controla o modo claro/escuro e data-palette controla as cores funcionais.
-    document.documentElement.setAttribute("data-theme", themeMode);
     document.documentElement.setAttribute("data-palette", colorPalette);
-    document.documentElement.style.colorScheme = themeMode;
   }, [
     fontSize,
     lineHeight,
     letterSpacing,
     isDyslexicFont,
-    darkMode,
     colorBlindness,
     colorPalette,
   ]);
 
   const toggleModal = () => setIsModalOpen((prev) => !prev);
-  const toggleDarkMode = () => setDarkMode((prev) => !prev);
 
   const resetSettings = () => {
     setFontSize(100);
@@ -79,7 +72,9 @@ export function AccessibilityProvider({ children }: { children: ReactNode }) {
     setIsDyslexicFont(false);
     setColorBlindness("none");
     setColorPalette("universal");
-    setDarkMode(false);
+    if (theme === "dark") {
+      toggleTheme();
+    }
   };
 
   const dynamicStyles = {
