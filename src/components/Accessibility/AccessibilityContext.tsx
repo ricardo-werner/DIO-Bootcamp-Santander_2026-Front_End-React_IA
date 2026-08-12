@@ -115,7 +115,7 @@ export function AccessibilityProvider({ children }: { children: ReactNode }) {
       {/* A classe wrapper-container aplica o background-color e color baseados nas paletas */}
       <div
         style={dynamicStyles}
-        className={`min-h-screen text-left transition-all duration-200 ${getDaltonismoClass()} ${
+        className={`min-h-screen transition-all duration-200 ${getDaltonismoClass()} ${
           isDyslexicFont ? "font-lexend" : "font-sans"
         }`}
       >
