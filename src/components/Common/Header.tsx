@@ -10,12 +10,7 @@ import { Divider } from './Divider'
 export function Header() {
   const navigate = useNavigate()
   const { theme, toggleTheme } = useTheme()
-  const { toggleModal, toggleDarkMode } = useAccessibility()
-
-  const handleThemeToggle = () => {
-    toggleTheme()
-    toggleDarkMode()
-  }
+  const { toggleModal } = useAccessibility()
 
   return (
     <header className="border-b border-border px-6 py-3">
@@ -31,14 +26,14 @@ export function Header() {
               void navigate('/')
             }
           }}
-          aria-label="Ir para a página inicial Planej.ai"
+          aria-label="Ir para a página inicial PrumIA"
         >
           <div className="bg-primary flex h-9 w-9 items-center justify-center rounded-full">
             <Wallet size={20} className="text-primary-foreground" />
           </div>
           <span className="text-lg">
-            <span className="text-muted-foreground font-medium">Planej</span>
-            <span className="font-extrabold">.ai</span>
+            <span className="text-muted-foreground font-medium">Prum</span>
+            <span className="font-extrabold text-primary">.IA</span>
           </span>
         </div>
 
@@ -71,7 +66,7 @@ export function Header() {
             aria-label={`Mudar para tema ${theme === 'light' ? 'escuro' : 'claro'}`}
             variant="ghost"
             icon={theme === 'light' ? Moon : Sun}
-            onClick={handleThemeToggle}
+            onClick={toggleTheme}
           />
         </div>
       </nav>
