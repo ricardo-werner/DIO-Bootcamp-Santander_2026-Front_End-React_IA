@@ -77,8 +77,8 @@ export function generateFallbackInsight(simulation: SimulationRecord): InsightDa
   const gap = availableMonthly - neededMonthly
   const debtRatio = income > 0 ? ((expenses + debts) / income) * 100 : 0
 
-  let status: 'viable' | 'needs_adjustment' | 'unfeasible' = 'viable'
-  let feasibilityText = ''
+  let status: 'viable' | 'needs_adjustment' | 'unfeasible'
+  let feasibilityText: string
 
   if (gap >= 0) {
     status = 'viable'
