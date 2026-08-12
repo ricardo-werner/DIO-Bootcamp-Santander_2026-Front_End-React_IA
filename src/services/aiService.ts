@@ -23,7 +23,7 @@ export interface InsightData {
   extraIncome: {
     items: string[]
   }
-  investment: {
+  investment?: {
     items: string[]
   }
   motivation: {
@@ -97,7 +97,7 @@ export function generateFallbackInsight(simulation: SimulationRecord): InsightDa
       content: feasibilityText,
     },
     diagnosis: {
-      content: `Atualmente, ${debtRatio.toFixed(0)}% da sua renda mensal de R$ ${simulation.income} está comprometida com custos essenciais (R$ ${simulation.expenses}) e parcelas de dívidas (R$ ${simulation.debts}). O saldo líquido disponível para investimentos é de R$ ${availableMonthly.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} por mês.`,
+      content: `Atualmente, ${debtRatio.toFixed(0)}% da sua renda mensal de R$ ${simulation.income} está comprometida com custos essenciais (R$ ${simulation.expenses}) e parcelas de dívidas (R$ ${simulation.debts}). O saldo líquido disponível para poupança é de R$ ${availableMonthly.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} por mês.`,
     },
     suggestions: {
       items: [
@@ -113,15 +113,8 @@ export function generateFallbackInsight(simulation: SimulationRecord): InsightDa
         'Realize trabalhos temporários ou freelancers em horários flexíveis nos finais de semana.',
       ],
     },
-    investment: {
-      items: [
-        `Reserva de emergência aplicada em Tesouro Selic ou CDB 100% do CDI com resgate diário.`,
-        `Para a meta de ${months} meses, utilize títulos CDB pós-fixados com garantia do FGC.`,
-        `Reinvista automaticamente todos os dividendos e rendimentos para acelerar os juros compostos.`,
-      ],
-    },
     motivation: {
-      content: `Seu objetivo "${simulation.goalName}" é plenamente realizável com planejamento e consistência! Siga firme no plano de aportes e comemore cada etapa concluída.`,
+      content: `Seu objetivo "${simulation.goalName}" é plenamente realizável com planejamento e consistência! Siga firme no plano de economia e comemore cada etapa concluída.`,
     },
   }
 }

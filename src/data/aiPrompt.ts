@@ -17,9 +17,6 @@ const RESPONSE_SCHEMA = `{
   "extraIncome": {
     "items": ["<Ideia prática para gerar renda extra compatível com a realidade brasileira>"]
   },
-  "investment": {
-    "items": ["<Sugestão de investimento acessível para o perfil apresentado, com foco em atingir a meta>"]
-  },
   "motivation": {
     "content": "<Mensagem final motivacional e personalizada, citando a meta pelo nome.>"
   }
@@ -33,7 +30,7 @@ export function buildAIPrompt(simulation: SimulationRecord) {
   const monthlySavingsNeeded =
     parseCurrency(goalAmount) / parseInt(goalDeadline)
 
-  return `Você é um educador financeiro especializado em finanças pessoais. 
+  return `Você é um educador financeiro especializado em planejamento pessoal. 
     Analise os dados abaixo e gere um diagnóstico financeiro personalizado com linguagem clara, didática e encorajadora, 
     voltado para pessoas sem conhecimento financeiro. O diagnóstico será exibido diretamente ao usuário no app, 
     fale sempre em segunda pessoa ("você tem...", "sua meta...").
@@ -58,6 +55,7 @@ export function buildAIPrompt(simulation: SimulationRecord) {
     - Máximo de 4 itens por lista
     - Seja específico ao citar valores calculados
     - Não repita informações entre seções
+    - NUNCA sugira produtos financeiros ou de investimento específicos (como ações, CDBs, fundos, etc). O papel de sugerir ou recomendar produtos de investimento deve ser realizado exclusivamente por um profissional certificado e especializado.
     - Nunca use markdown dentro dos valores do JSON
     - Para o campo "feasibility.status", use os seguintes critérios:
       - "viable": saldo após reserva para a meta é maior ou igual a 0
