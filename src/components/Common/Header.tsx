@@ -13,11 +13,14 @@ export function Header() {
   const { toggleModal } = useAccessibility()
 
   return (
-    <header className="border-b border-border px-6 py-3">
-      <nav className="flex items-center justify-between" aria-label="Navegação Principal">
+    <header className="border-b border-border bg-card/60 backdrop-blur-md sticky top-0 z-40">
+      <nav
+        className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8"
+        aria-label="Navegação Principal"
+      >
         {/* Logo */}
         <div
-          className="flex cursor-pointer items-center gap-2"
+          className="flex cursor-pointer items-center gap-2 transition-opacity hover:opacity-90"
           onClick={() => void navigate('/')}
           role="button"
           tabIndex={0}
@@ -28,17 +31,17 @@ export function Header() {
           }}
           aria-label="Ir para a página inicial PrumIA"
         >
-          <div className="bg-primary flex h-9 w-9 items-center justify-center rounded-full">
+          <div className="bg-primary flex h-9 w-9 items-center justify-center rounded-full shadow-xs">
             <Wallet size={20} className="text-primary-foreground" />
           </div>
-          <span className="text-lg">
-            <span className="text-muted-foreground font-medium">Prum</span>
-            <span className="font-extrabold text-primary">.IA</span>
+          <span className="text-lg tracking-tight">
+            <span className="text-foreground font-bold">Prum</span>
+            <span className="text-primary font-extrabold">.IA</span>
           </span>
         </div>
 
         {/* Actions Buttons */}
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1.5 sm:gap-3">
           <Button
             variant="secondary"
             icon={TrendingUp}
@@ -55,7 +58,7 @@ export function Header() {
           >
             <span className="hidden sm:inline">Histórico</span>
           </Button>
-          <Divider orientation="vertical" />
+          <Divider orientation="vertical" className="h-6" />
           <Button
             aria-label="Abrir Painel de Acessibilidade"
             variant="ghost"
