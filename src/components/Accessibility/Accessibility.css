@@ -3,14 +3,10 @@
 @layer base {
   /* PALETAS DE ACESSIBILIDADE WCAG (Cores Funcionais) */
 
-  /* 1. Paleta de Cores para tema Padrão - Contraste Universal (BAixa Visão / Fotofobia ) */
-  :root,
+  /* 1. Paleta de Cores para tema Padrão - Contraste Universal */
   [data-palette="universal"] {
-    --bck-color: #0b0f19; /* Preto Profundo */
-    --surface-color: #1e293b; /* Cinza Escuro (Cards e Modais) */
-    --text-color: #ffffff; /* Branco Puro */
-    --primary-color: #06b6d4; /* Ciano Claro (Botões e Links) */
-    --alert-color: #f59e0b; /* Amarelo Alerta */
+    --primary-color: #2563eb;
+    --alert-color: #f59e0b;
   }
 
   /* 2. Paleta de Cores para tema Calmo (Dislexia, TDAH, Down) */

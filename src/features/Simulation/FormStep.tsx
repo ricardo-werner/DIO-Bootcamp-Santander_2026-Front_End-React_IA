@@ -46,14 +46,14 @@ export function FormStep({
   }
 
   return (
-    <div className="bg-card rounded-2xl p-6 shadow-[4px_4px_18px_0px_rgba(0,0,0,0.2)] sm:p-8">
-      <div className="bg-primary mb-4 flex h-15 w-15 items-center justify-center rounded-xl">
-        <Icon size={32} className="text-primary-foreground" />
+    <div className="bg-card border-border rounded-2xl border p-6 shadow-md transition-all sm:p-8">
+      <div className="bg-primary/10 text-primary mb-4 flex h-14 w-14 items-center justify-center rounded-2xl">
+        <Icon size={28} />
       </div>
-      <h2 className="text-primary mb-1 text-xs font-semibold tracking-widest uppercase">
+      <h2 className="text-primary mb-1 text-xs font-bold tracking-widest uppercase">
         {title}
       </h2>
-      <h3 className="text-foreground mb-6 text-xl leading-snug font-semibold sm:text-2xl">
+      <h3 className="text-foreground mb-6 text-xl font-bold leading-snug sm:text-2xl">
         {question}
       </h3>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
